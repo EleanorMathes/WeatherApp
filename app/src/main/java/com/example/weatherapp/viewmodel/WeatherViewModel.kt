@@ -10,17 +10,17 @@ import com.example.weatherapp.utilities.Result
 import kotlinx.coroutines.launch
 
 class WeatherViewModel(private val repository: WeatherRepository): ViewModel() {
-    private val _weatherData = MutableLiveData<WeatherResponse>()
-    val weatherData: LiveData<WeatherResponse> = _weatherData
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
+    private val _weatherData = MutableLiveData<WeatherResponse>()
+    val weatherData: LiveData<WeatherResponse> = _weatherData
 
     fun fetchWeatherData(location: String){
         _isLoading.value = true
         viewModelScope.launch {
-
             when(val result = repository.getWeatherData(location)){
                 is Result.Success -> {
                     _weatherData.value = result.data

@@ -32,10 +32,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // Initialize UI
+
         initViews()
         setupObservers()
-        // default location
+        // default loaction search
         viewModel.fetchWeatherData("Indianapolis")
     }
 
@@ -57,19 +57,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        // Observe weather data changes
+        // weather data changes
         viewModel.weatherData.observe(this, Observer { weatherData ->
             weatherData?.let {
                 updateWeatherUI(it)
             }
         })
 
-        // Observe loading state
+        // loading state
         viewModel.isLoading.observe(this, Observer { isLoading ->
             val progressBar = findViewById<ProgressBar>(R.id.progressBar)
             progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         })
-        // Observe error messages
+        // error messages
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
             val tvError = findViewById<TextView>(R.id.tvError)
 
@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         val tvHumidity = findViewById<TextView>(R.id.tvHumidity)
         val tvWind = findViewById<TextView>(R.id.tvWind)
 
-        // Update UI with weather data
+        // UI Update
         tvLocation.text = "${weatherResponse.location.name}, ${weatherResponse.location.country}"
         tvTemperature.text = "${weatherResponse.current.temp_f}°F"
         tvCondition.text = weatherResponse.current.condition.text

@@ -1,29 +1,20 @@
 package com.example.weatherapp.data.model
-
-
-
 data class WeatherResponse(
     val location: Location,
     val current: Current
-
 )
-// name of our location and country
 data class Location(
-    val name: String,
-    val country: String
+    val name: String,        // City name
+    val country: String      // Country name
 )
-
-//Current condition (humidity, wind speed, temperature in f)
 data class Current(
-    val temp_f: Double,
-    val condition: Condition,
-    val humidity: Int,
-    val wind_mph: Double,
-    val feelslike_f: Double,
-
+    val temp_f: Double,           // Temperature in Celsius
+    val condition: Condition,     // Weather condition (text and icon)
+    val humidity: Int,            // Humidity percentage
+    val wind_mph: Double,         // Wind speed in km/h
+    val feelslike_f: Double       // "Feels like" temperature
 )
-// Condition description and icon
 data class Condition(
-    val text: String,
-    val icon: String
+    val text: String,        // Weather description (e.g., "Partly cloudy")
+    val icon: String         // Weather icon URL
 )

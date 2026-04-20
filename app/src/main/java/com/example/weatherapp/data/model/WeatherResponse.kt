@@ -8,10 +8,10 @@ data class Location(
     val country: String      // Country name
 )
 data class Current(
-    val temp_f: Double,           // Temperature in Celsius
+    val temp_f: Double,           // Temperature in Fahrenheit
     val condition: Condition,     // Weather condition (text and icon)
     val humidity: Int,            // Humidity percentage
-    val wind_mph: Double,         // Wind speed in km/h
+    val wind_mph: Double,         // Wind speed in mp/h
     val feelslike_f: Double       // "Feels like" temperature
 )
 data class Condition(

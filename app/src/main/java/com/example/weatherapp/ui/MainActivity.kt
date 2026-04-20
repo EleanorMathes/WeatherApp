@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         initViews()
         setupObservers()
-        // default loaction search
+        // default location search
         viewModel.fetchWeatherData("Indianapolis")
     }
 
